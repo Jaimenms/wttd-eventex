@@ -3,6 +3,6 @@
 .wttd
 *.sqlite3
 *pyc
-__pycashe__
+__pycache__
 
 
