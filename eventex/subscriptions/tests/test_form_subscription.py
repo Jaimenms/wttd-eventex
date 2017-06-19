@@ -3,7 +3,7 @@ from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 
 
-class SubscriptionFOrmTest(TestCase):
+class SubscriptionFormTest(TestCase):
 
     def setUp(self):
         self.form = SubscriptionForm()
