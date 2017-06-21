@@ -1,6 +1,5 @@
-import unittest
 from django.test import TestCase
-from eventex.subscriptions.forms import SubscriptionForm
+from django.shortcuts import resolve_url as r
 from eventex.subscriptions.models import Subscription
 
 
@@ -12,7 +11,7 @@ class SubscribeDetailGet(TestCase):
             email='henrique@bastos.net',
             phone='21-999999999'
         )
-        self.resp = self.client.get('/inscricao/{}/'.format(self.obj.pk))
+        self.resp = self.client.get(r('subscriptions:detail',self.obj.pk))
 
     def test_get(self):
         """Get /inscricao/ must return status code 200"""
@@ -28,12 +27,12 @@ class SubscribeDetailGet(TestCase):
 
     def test_html(self):
         contents = (self.obj.name,self.obj.cpf, self.obj.email, self.obj.phone)
-
         with self.subTest():
             for expected in contents:
                 self.assertContains(self.resp, expected)
 
+
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):
-        resp = self.client.get('inscricao/0/')
+        resp = self.client.get(r('subscriptions:detail',0))
         self.assertEqual(404, resp.status_code)
