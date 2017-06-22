@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
 class HomeTest(TestCase):
+    fixtures = ['keynotes.json']
 
     def setUp(self):
         self.response = self.client.get(r('home'))
@@ -21,6 +22,8 @@ class HomeTest(TestCase):
     def test_speakers(self):
         """Must show keynote speakers"""
         contents = [
+            'href="{}"'.format(r('speaker_detail', slug='grace-hopper')),
+            'href="{}"'.format(r('speaker_detail', slug='alan-turing')),
             "Grace Hopper",
             "http://hbn.link/hopper-pic",
             "Alan Turing",
