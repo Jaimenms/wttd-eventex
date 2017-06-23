@@ -1,0 +1,6 @@
+<h3>{{ talk.start }} - {{ talk.title }}</h3>
+<h4>Por
+    {% for speaker in talk.speakers.all %}
+    <a href="{{  speaker.get_absolute_url }}">{{speaker.name }}</a></h4>
+    {%  endfor %}
+<p>{{ talk.description }}</p>
