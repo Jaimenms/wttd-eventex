@@ -47,7 +47,7 @@ class TalkListGet(TestCase):
 
 
     def test_context(self):
-        variables = ['morning_talks', 'afternoon_talks']
+        variables = ['talk_list']
 
         for key in variables:
             with self.subTest():
